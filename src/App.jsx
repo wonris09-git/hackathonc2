@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useMemo } from "react";
+import React, { useState, useReducer, useMemo, useEffect } from "react";
 import { useTideCloak } from "@tidecloak/react";
 import seed from "./seed.json";
 
@@ -104,14 +104,15 @@ function reducer(state, action) {
 }
 
 export default function App() {
+  const tideContext = useTideCloak();
   const {
-    authenticated,
-    isInitializing,
-    isLoading,
+    authenticated = false,
+    isInitializing = false,
+    isLoading = false,
     login,
     logout,
     getValueFromToken
-  } = useTideCloak();
+  } = tideContext || {};
 
   const [state, dispatch] = useReducer(reducer, {
     reports: seed.initialReports,
@@ -153,6 +154,12 @@ export default function App() {
   const [whistleblowerSubTab, setWhistleblowerSubTab] = useState("submit");
   const [trackingInputId, setTrackingInputId] = useState("WC-9041-A2");
   const [selectedCaseId, setSelectedCaseId] = useState(seed.initialReports[0].id);
+  const [initTimeout, setInitTimeout] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setInitTimeout(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [newTitle, setNewTitle] = useState("");
   const [newCategory, setNewCategory] = useState("financial");
@@ -179,7 +186,7 @@ export default function App() {
     [state.reports, trackingInputId]
   );
 
-  const tokenUser = authenticated
+  const tokenUser = authenticated && typeof getValueFromToken === "function"
     ? getValueFromToken("name") || getValueFromToken("preferred_username") || "Tide Authenticated User"
     : "";
 
@@ -296,7 +303,7 @@ export default function App() {
     }
   }
 
-  if (isInitializing) {
+  if (isInitializing && !initTimeout) {
     return (
       <div className="initializing-screen">
         <div className="spinner"></div>
