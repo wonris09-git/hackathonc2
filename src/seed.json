@@ -1,0 +1,104 @@
+﻿{
+  "committee": [
+    {
+      "id": "member-1",
+      "name": "Dr. Elena Vance",
+      "title": "Chair of Independent Ethics Committee",
+      "avatar": "EV",
+      "role": "ethics-chair"
+    },
+    {
+      "id": "member-2",
+      "name": "Marcus Sterling, JD",
+      "title": "Student & Staff Ombudsman",
+      "avatar": "MS",
+      "role": "ombudsman"
+    },
+    {
+      "id": "member-3",
+      "name": "Sophia Chen, CFE",
+      "title": "External Forensic Compliance Auditor",
+      "avatar": "SC",
+      "role": "compliance-auditor"
+    }
+  ],
+  "categories": [
+    { "id": "financial", "label": "Financial Fraud & Grant Embezzlement", "icon": "dollar-sign" },
+    { "id": "academic", "label": "Academic Integrity & Grade Tampering", "icon": "graduation-cap" },
+    { "id": "harassment", "label": "Workplace Retaliation & Discrimination", "icon": "shield-alert" },
+    { "id": "safety", "label": "Research Falsification & Safety Violations", "icon": "alert-triangle" }
+  ],
+  "initialReports": [
+    {
+      "id": "WC-9041-A2",
+      "timestamp": "2026-10-20T14:30:00Z",
+      "category": "financial",
+      "title": "Discrepancy in AI Supercomputing Grant Procurement",
+      "severity": "Critical",
+      "status": "investigating",
+      "approvals": ["member-1", "member-3"],
+      "encryptedPayloadHash": "0x8f3c7e4b2d9a1058f6c318ab4de91230ca579f182c1e8460bfa7d9e13589b210",
+      "publicSummary": "Equipment invoices for cloud GPU compute clusters were marked up by 42% through an unapproved shell supplier.",
+      "evidenceCount": 3,
+      "whistleblowerSecretAlias": "PhantomSeal#44",
+      "messages": [
+        {
+          "sender": "Whistleblower",
+          "time": "2026-10-20T14:35:00Z",
+          "text": "Attached wire transfer receipts and purchase order #PO-8821 in zero-knowledge encrypted vault."
+        },
+        {
+          "sender": "Committee",
+          "time": "2026-10-21T10:00:00Z",
+          "text": "Quorum of 2 reached. External forensics has verified the hash match. Formal inquiry initiated."
+        }
+      ]
+    },
+    {
+      "id": "WC-9182-E7",
+      "timestamp": "2026-10-21T09:15:00Z",
+      "category": "academic",
+      "title": "Unsanctioned Administrative Grade Overrides in Dept of CS",
+      "severity": "High",
+      "status": "pending",
+      "approvals": ["member-2"],
+      "encryptedPayloadHash": "0x4e29ab7109c3f58a2d109b7c64a51e93847fbc1209a847de194b6284fca9281e",
+      "publicSummary": "System logs reveal 7 undergraduate student grades were manually elevated without instructor exam authorization.",
+      "evidenceCount": 2,
+      "whistleblowerSecretAlias": "ShadowFox#09",
+      "messages": [
+        {
+          "sender": "Whistleblower",
+          "time": "2026-10-21T09:18:00Z",
+          "text": "Grade changes occurred on Saturday at 03:14 AM from internal administrator IP pool."
+        }
+      ]
+    },
+    {
+      "id": "WC-9240-K4",
+      "timestamp": "2026-10-22T08:00:00Z",
+      "category": "safety",
+      "title": "Suppression of High-Voltage Battery Thermal Failure Logs",
+      "severity": "Critical",
+      "status": "pending",
+      "approvals": [],
+      "encryptedPayloadHash": "0x7b58f01c29dae834019bf4781cae940183749fab1029c4819dca8174092b381a",
+      "publicSummary": "Telemetry records showing battery cell overheating under rapid charging cycles were withheld from published laboratory report.",
+      "evidenceCount": 4,
+      "whistleblowerSecretAlias": "CipherAegis#18",
+      "messages": [
+        {
+          "sender": "Whistleblower",
+          "time": "2026-10-22T08:02:00Z",
+          "text": "Raw sensor telemetry JSON files are sealed in the Tide escrow vault."
+        }
+      ]
+    }
+  ],
+  "rogueAdmin": {
+    "id": "admin-corrupt",
+    "name": "Victor Crowley",
+    "title": "Root Infrastructure Administrator",
+    "role": "sysadmin"
+  }
+}
